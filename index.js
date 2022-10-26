@@ -18,14 +18,39 @@ const bot = async () => {
 
   await page.type("#searchInput", keyword);
 
-  page.evaluate(() => {
-    document
+  await page.evaluate(async () => {
+    await document
       .querySelector("#search-wrapper > div.input-wrapper > label > button")
       .click();
-    // JSON.stringify(
-    //   document.querySelector("#tag-generator > div.tagbox").children
-    // );
   });
+
+  await page.evaluate(() => {
+    // click button copy
+    // await document.querySelector(".copy").click();
+
+    const num = document.querySelector(
+      "#tag-generator > div.tagbox"
+    ).childElementCount;
+
+    const keys = [];
+    let element;
+
+    for (let i = 1; i <= num; i++) {
+      element = document.querySelector(
+        `#tag-generator > div.tagbox > span:nth-child(${i})`
+      ).textContent;
+      keys.push(element);
+    }
+    console.log(keys);
+  });
+
+  // open a new page in the browser
+  // const newPage = await browser.newPage();
+
+  // navigate to the google docs page
+  // await newPage.goto(
+  //   "https://docs.google.com/document/d/1X5hEv2g5xOqXs_ixBHY1nU27WjuBZvjvOVIi1wFDseQ/edit?usp=sharing"
+  // );
 
   print("Encerrando robô...");
   await browser.close();
