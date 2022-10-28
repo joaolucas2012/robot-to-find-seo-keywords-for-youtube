@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+require("dotenv").config();
 
 const bot = async () => {
   // print the greetings
@@ -7,7 +8,7 @@ const bot = async () => {
   // open the browser window
   print("Launching in the browser...");
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: ["--start-maximized"],
     defaultViewport: null,
   });
@@ -25,7 +26,7 @@ const bot = async () => {
   print("Button agree clicked!");
 
   // keyword to search for
-  const keyword = "chocolate";
+  const keyword = process.env.KEY_TO_SEARCH;
   print(`Pesquisando por "${keyword}..."`);
 
   // get the input element and clear it
