@@ -84,15 +84,18 @@ const bot = async () => {
   await browser.close();
 };
 
+// call the bot function
+bot();
+
+/****************** FUNCTIONS ************************/
 // function to print things
 function print(thing) {
   console.log(thing);
 }
-
+// function to add a time delay
 function delay(time) {
   return new Promise(function (resolve) {
     setTimeout(resolve, time);
   });
 }
-
-bot();
+/****************************************************/
