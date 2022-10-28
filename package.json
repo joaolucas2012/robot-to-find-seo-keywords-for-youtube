@@ -10,6 +10,7 @@
   "author": "João Lucas",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "puppeteer": "^19.2.0"
   }
 }
