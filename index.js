@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
+const fs = require("fs");
 
 const bot = async () => {
   // print the greetings
@@ -77,8 +78,9 @@ const bot = async () => {
     return input.value;
   });
 
-  // print the keywords in the terminal
-  print(`"\n"These are the resulting keywords: ${result}`);
+  // save the keywords in a txt file
+  const data = `These are the resulting keywords:\n\n ${result}`;
+  fs.writeFileSync("./result/keywords.txt", data);
 
   print("\nEncerrando robô...");
   await browser.close();
